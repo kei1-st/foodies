@@ -1,4 +1,4 @@
-"use client";   // クライアントサイドレンダリングの宣言
+"use client"; // クライアントサイドレンダリングの宣言
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
