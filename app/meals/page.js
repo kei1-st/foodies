@@ -1,11 +1,16 @@
 import MealsGrid from "@/components/meals/meals-grid";
 import classes from "./page.module.css";
+import { Suspense } from "react";
 import Link from "next/link";
 import { getMeals } from "@/lib/meals";
 
-export default async function MealsPage() {
+async function Meals(){
   // getMeals() のための async :
   const meals = await getMeals();
+  return <MealsGrid meals={meals} />;
+}
+
+export default function MealsPage() {
 
   return (
     <>
@@ -19,7 +24,9 @@ export default async function MealsPage() {
         </p>
       </header>
       <main>
-        <MealsGrid meals={meals} />
+        <Suspense fallback={<p className={classes.loading}>Fetching meals...</p>}>  {/* フェッチにかかる時間の間サスペンドする */}
+          <Meals />
+        </Suspense>
       </main>
     </>
   );
