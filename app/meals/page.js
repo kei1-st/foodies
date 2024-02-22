@@ -3,7 +3,8 @@ import classes from "./page.module.css";
 import Link from "next/link";
 import { getMeals } from "@/lib/meals";
 
-export default async function MealsPage() { // getMeals() のための async :
+export default async function MealsPage() {
+  // getMeals() のための async :
   const meals = await getMeals();
 
   return (
